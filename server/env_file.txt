@@ -1,0 +1,12 @@
+// create your own .env file with the following information:
+
+
+module.exports = {
+    authSecret: '',
+    connection: {
+        port: 5433,
+        database: 'teachtolearn',
+        user: ''
+        password: ''
+    }
+}
