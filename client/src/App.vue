@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header title="Teach To Learn" />
+    <Header title="Teach To Learn" :hideToggle="false" />
     <Menu />
     <Content />
     <Footer />
