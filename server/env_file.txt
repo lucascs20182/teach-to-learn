@@ -6,7 +6,7 @@ module.exports = {
     connection: {
         port: 5433,
         database: 'teachtolearn',
-        user: ''
+        user: '',
         password: ''
     }
 }
