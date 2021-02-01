@@ -72,6 +72,9 @@
                 </b-button>
             </template>
         </b-table>
+
+        <b-pagination size="md" v-model="page"
+            :total-rows="count" :per-page="limit" />
     </div>
 </template>
 
@@ -83,6 +86,7 @@
     export default {
         name: 'ArticleAdmin',
         components: { VueEditor },
+
         data: function() {
             return {
                 mode: 'save',
@@ -101,9 +105,10 @@
                 ]
             }
         },
+
         methods: {
             loadArticles() {
-                const url = `${baseApiUrl}/articles`
+                const url = `${baseApiUrl}/articles?page=${this.page}`
 
                 axios.get(url).then(res => {
                     this.articles = res.data.data
@@ -168,6 +173,13 @@
                 })
             }
         },
+
+        watch: {
+            page() {
+                this.loadArticles()
+            }
+        },
+
         mounted() {
             this.loadArticles()
             this.loadCategories()
