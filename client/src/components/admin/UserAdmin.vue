@@ -62,7 +62,18 @@
 
         <hr />
 
-        <b-table hover striped :items="users" :fields="fields"></b-table>
+        <b-table hover striped :items="users" :fields="fields">
+            <template v-slot:cell(actions)="data">
+                <b-button variant="warning" @click="loadUser(data.item)"
+                    class="mr-2">
+                        <i class="fa fa-pencil"></i>
+                </b-button>
+
+                <b-button variant="danger" @click="loadUser(data.item, 'remove')">
+                    <i class="fa fa-trash"></i>
+                </b-button>
+            </template>
+        </b-table>
     </div>
 </template>
 
@@ -123,6 +134,11 @@
                         this.reset()
                     })
                     .catch(showError)
+            },
+
+            loadUser(user, mode = 'save') {
+                this.mode = mode
+                this.user = { ...user }
             }
         },
         mounted() {
