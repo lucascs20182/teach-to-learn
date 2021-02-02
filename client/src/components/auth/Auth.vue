@@ -1,6 +1,6 @@
 <template>
     <div class="auth-content">
-        <div class="auth-modal">
+        <div class="auth-modal" v-on:keyup.enter="loginByPressingEnter">
             <img src="@/assets/logo.png" width="200" alt="Logo">
 
             <hr />
@@ -57,6 +57,10 @@
                         this.showSignup = false
                     })
                     .catch(showError)
+            },
+
+            loginByPressingEnter() {
+                return this.showSignup ? this.signup() : this.signin()
             }
         }
     }
